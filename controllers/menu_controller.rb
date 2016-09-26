@@ -42,7 +42,7 @@ class MenuController
 
     when 5
       system "clear"
-      view_entry_number
+      entry_n_submenu
       main_menu
 
     when 6
@@ -56,12 +56,20 @@ class MenuController
     end
   end
 
-  def view_entry_number
+  def entry_n_submenu
     print "Entry number to view: "
-    selection = gets.chomp.to_s
+    selection = gets.chomp.to_i
 
     if selection < @address_book.entries.count
-      
+      puts @address_book.entries[selection]
+      puts "Press enter to return to main menu"
+      gets.chomp
+      system "clear"
+    else
+      puts "#{selection} is not a valid input!"
+      entry_n_submenu
+    end
+
   end
 
   def view_all_entries
